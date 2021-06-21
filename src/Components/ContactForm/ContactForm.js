@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import contactsActions from '../../redux/contacts/contacts-actions';
+import contactsOperations from '../../redux/contacts/contacts-operations';
 
 import './ContactForm.scss';
 
@@ -69,7 +69,7 @@ ContactForm.propTypes = {
 };
 
 const mapDispatchToProps = dispatch => ({
-  onSubmit: obj => dispatch(contactsActions.addContact(obj)),
+  onSubmit: obj => dispatch(contactsOperations.addContact(obj)),
 });
 
 export default connect(null, mapDispatchToProps)(ContactForm);
