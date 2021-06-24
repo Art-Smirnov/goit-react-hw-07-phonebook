@@ -5,12 +5,13 @@ import ContactList from './Components/ContactList';
 import Filter from './Components/Filter';
 import Container from './Components/Container';
 import Spiner from './Components/Spiner';
-import contactsOperations from './redux/contacts/contacts-operations';
+import { contactsOperations, contactsSelectors } from './redux/contacts';
 
 class App extends Component {
   componentDidMount() {
     this.props.fetchContacts();
   }
+
   render() {
     const { isLoadingContacts, error } = this.props;
     return (
@@ -33,8 +34,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  isLoadingContacts: state.contacts.loading,
-  error: state.contacts.error,
+  isLoadingContacts: contactsSelectors.getLoading(state),
+  error: contactsSelectors.getError(state),
 });
 
 const mapDispatchToProps = dispatch => ({
