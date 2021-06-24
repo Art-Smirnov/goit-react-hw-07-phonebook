@@ -22,6 +22,7 @@ const contactsSelectors = {
   getLoading,
   getError,
   getFilter,
+  getAllContacts,
   getVisibleContacts,
 };
 

@@ -1,9 +1,13 @@
 import { connect } from 'react-redux';
-import contactsOperations from '../../redux/contacts/contacts-operations';
 import ContactForm from './ContactForm';
+import { contactsSelectors, contactsOperations } from '../../redux/contacts';
+
+const mapStateToProps = state => ({
+  contacts: contactsSelectors.getAllContacts(state),
+});
 
 const mapDispatchToProps = dispatch => ({
   onSubmit: obj => dispatch(contactsOperations.addContact(obj)),
 });
 
-export default connect(null, mapDispatchToProps)(ContactForm);
+export default connect(mapStateToProps, mapDispatchToProps)(ContactForm);

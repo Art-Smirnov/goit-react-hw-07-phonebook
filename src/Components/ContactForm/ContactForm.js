@@ -19,8 +19,12 @@ class ContactForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
-    this.props.onSubmit(this.state);
+    const normalizedName = this.state.name.toLocaleLowerCase();
+    this.props.contacts.some(
+      contact => contact.name.toLocaleLowerCase() === normalizedName,
+    )
+      ? alert(`${this.state.name} is already in contacts`)
+      : this.props.onSubmit(this.state);
     this.reset();
   };
 
